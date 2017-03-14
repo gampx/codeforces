@@ -1,3 +1,4 @@
+#include <vector>
 template<class T>
 struct Line {
   T a, b;
@@ -7,7 +8,7 @@ struct Line {
 template<class T>
 struct ConvexHullTrick {
   int size;
-  vector<Line<T>> hull;
+  std::vector<Line<T>> hull;
 
   ConvexHullTrick(int maxSize):
     size(0),
