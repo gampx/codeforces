@@ -13,8 +13,11 @@ stopped = False
 while not stopped:
     stopped = True
     for line_number, line in enumerate(vim.current.buffer):
-        if line.startswith('#include "algos'):
+        if line.startswith('#include "algos/'):
             unfold(line, line_number)
             stopped = False
+            break
+        elif line.startswith('#include "all_algos.h"'):
+            del vim.current.buffer[line_number]
             break
 
