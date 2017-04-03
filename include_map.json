@@ -1,4 +1,0 @@
-{
-  "algos/convex_hull_trick.h": ["ConvexHullTrick"],
-  "algos/primes.h": ["IsPrime"]
-}

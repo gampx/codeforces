@@ -1,4 +1,3 @@
-import json
 import re
 
 # Aho-Corasick
@@ -80,16 +79,14 @@ def get_keywords_found(line):
             for j in AdjList[current_state]["output"]:
                 keywords_found.append({"index":i-len(j) + 1,"word":j})
     return keywords_found
-
-with open("include_map.json", 'r') as f:
-    include_map = json.load(f)
-
-    reverse_map = {}
+with open("tags", 'r') as f:
     list_of_keywords = []
+    include_map = {}
     needed_includes = set()
-    for k,v in include_map.iteritems():
-        for key in v:
-            reverse_map[key] = k
+    for line in f:
+        if not line.startswith('!'):
+            key, value = line.split()[:2]
+            include_map[key] = value
             list_of_keywords.append(key)
 
     init_trie(list_of_keywords)
@@ -97,7 +94,7 @@ with open("include_map.json", 'r') as f:
         found_keywords = get_keywords_found(line)
         if len(found_keywords) > 0:
             for keyword in found_keywords:
-                needed_includes.add(reverse_map[keyword["word"]])
+                needed_includes.add(include_map[keyword["word"]])
 
     for include in needed_includes:
         vim.current.buffer.append('#include "'+include+'"', 1)

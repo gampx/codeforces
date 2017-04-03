@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	/16eccf0/
-ConvexHullTrick	algos/convex_hull_trick.h	/^  ConvexHullTrick(int maxSize):$/;"	f	language:C++	struct:ConvexHullTrick
+!_TAG_PROGRAM_VERSION	0.0.0	/3a7e0bb/
+AdjacencyListGraphBase	algos/adjacency_list_graph.h	/^class AdjacencyListGraphBase {$/;"	c	language:C++
+ConvexHullTrick	algos/convex_hull_trick.h	/^struct ConvexHullTrick {$/;"	s	language:C++
 IsPrime	algos/primes.h	/^bool IsPrime(int64_t n) {$/;"	f	language:C++	typeref:typename:bool
+SimpleGraph	algos/simple_graph.h	/^class SimpleGraph: public AdjacencyListGraphBase<size_t> {$/;"	c	language:C++
