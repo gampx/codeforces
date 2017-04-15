@@ -9,3 +9,4 @@ AdjacencyListGraphBase	algos/adjacency_list_graph.h	/^class AdjacencyListGraphBa
 ConvexHullTrick	algos/convex_hull_trick.h	/^struct ConvexHullTrick {$/;"	s	language:C++
 IsPrime	algos/primes.h	/^bool IsPrime(int64_t n) {$/;"	f	language:C++	typeref:typename:bool
 SimpleGraph	algos/simple_graph.h	/^class SimpleGraph: public AdjacencyListGraphBase<size_t> {$/;"	c	language:C++
+make_vector	algos/make_vector.h	/^auto make_vector(Args... args) -> decltype(MakeVector<T, sizeof...(Args) - 1>::make_vector(args./;"	f	language:C++	typeref:typename:decltype (MakeVector<T,sizeof...(Args)-1>::make_vector (args...))
