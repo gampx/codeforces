@@ -1,21 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-using ull = unsigned long long;
-template<class T> using V = vector<T>;
-template<class T> using VV = V<V<T>>;
-using VI = V<int>;
-using VVI = VV<int>;
-using VL = V<ll>;
-using VVL = VV<ll>;
-template <typename T, size_t N>
-struct MakeVector { template <typename... Args, typename R = vector<decltype(MakeVector<T, N-1>::make_vector(declval<Args>()...))>> static R make_vector(std::size_t first, Args... sizes) { auto inner = MakeVector<T, N - 1>::make_vector(sizes...); return R(first, inner);}};
-template <typename T> struct MakeVector<T, 1> { template <typename R = std::vector<T>> static R make_vector(std::size_t size, const T& value) { return R(size, value); }};
-template <typename T, typename... Args>
-auto make_vector(Args... args) -> decltype(MakeVector<T, sizeof...(Args) - 1>::make_vector(args...)) {
-  return MakeVector<T, sizeof...(Args) - 1>::make_vector(args...);
-}
-
 
 constexpr size_t kAlphabetSize = 26;
 struct StringTrieNode {
@@ -87,31 +69,3 @@ struct StringTrie {
     assert(node == nullptr && index == 0);
   }
 };
-
-int dfs(StringTrieNode* v, int want_win) {
-  if (v->is_terminal) return !want_win;
-  for (int i = 0; i < kAlphabetSize; i++) {
-    if (v->children[i])
-      if (0 == dfs(v->children[i], want_win))
-        return 1;
-  }
-  return 0;
-}
-
-int main() {
-  int n, k;
-  cin >> n >> k;
-  StringTrie trie;
-  for (int i = 0; i < n; i++) {
-    string s;
-    cin >> s;
-    trie.add(s);
-  }
-  int first_may_force_win = dfs(trie.root, 1);
-  int first_may_force_lose = dfs(trie.root, 0);
-  if (first_may_force_win && first_may_force_lose) cout << "First";
-  if (!first_may_force_win) cout << "Second";
-  if (first_may_force_win && !first_may_force_lose) cout << (k & 1 ? "First" : "Second");
-  return 0;
-}
-
